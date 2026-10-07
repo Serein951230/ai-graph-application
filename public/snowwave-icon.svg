@@ -1,0 +1,15 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Snowwave Paper brain icon">
+  <rect width="128" height="128" fill="#facc15"/>
+  <path d="M38 74C28 70 23 61 25 51C27 40 36 34 47 35C51 26 60 22 70 24C78 25 85 31 87 39C97 39 105 46 107 56C109 66 104 75 96 80C96 92 86 101 73 100H58C47 100 39 91 38 80Z" fill="#08090d"/>
+  <path d="M52 35C45 40 44 49 50 55C42 57 38 64 41 72" fill="none" stroke="#f8f1c9" stroke-width="5" stroke-linecap="square" stroke-linejoin="round"/>
+  <path d="M70 25C62 33 63 43 72 48C63 52 61 62 68 69C60 72 56 82 61 91" fill="none" stroke="#f8f1c9" stroke-width="5" stroke-linecap="square" stroke-linejoin="round"/>
+  <path d="M86 41C94 48 94 57 86 64C94 68 96 77 89 85C83 92 74 93 67 88" fill="none" stroke="#f8f1c9" stroke-width="5" stroke-linecap="square" stroke-linejoin="round"/>
+  <path d="M43 100H88V111H43Z" fill="#08090d"/>
+  <path d="M51 109C61 116 77 116 87 109" fill="none" stroke="#08090d" stroke-width="7" stroke-linecap="square"/>
+  <g fill="#f8f1c9">
+    <rect x="47" y="50" width="8" height="8"/>
+    <rect x="68" y="44" width="8" height="8"/>
+    <rect x="83" y="62" width="8" height="8"/>
+    <rect x="58" y="82" width="8" height="8"/>
+  </g>
+</svg>

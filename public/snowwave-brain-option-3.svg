@@ -1,0 +1,17 @@
+<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+  <rect width="160" height="160" fill="#facc15"/>
+  <path d="M45 91C33 86 30 73 36 63C41 54 50 50 62 52C66 40 78 34 91 38C102 42 109 51 110 63C123 64 131 75 129 88C127 101 117 111 102 112H62C50 112 42 104 45 91Z" fill="#08090d"/>
+  <g fill="none" stroke="#f8f1c9" stroke-width="6" stroke-linecap="square">
+    <path d="M58 68L79 56L101 70"/>
+    <path d="M79 56L82 84L64 99"/>
+    <path d="M82 84L108 95"/>
+  </g>
+  <g fill="#f8f1c9">
+    <rect x="52" y="62" width="12" height="12"/>
+    <rect x="73" y="50" width="12" height="12"/>
+    <rect x="95" y="64" width="12" height="12"/>
+    <rect x="76" y="78" width="12" height="12"/>
+    <rect x="58" y="93" width="12" height="12"/>
+    <rect x="102" y="89" width="12" height="12"/>
+  </g>
+</svg>

@@ -1,0 +1,77 @@
+<svg width="1040" height="300" viewBox="0 0 1040 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1040" height="300" rx="16" fill="#08090d"/>
+  <style>
+    text { font-family: Georgia, "Times New Roman", serif; font-weight: 900; fill: #f8f1c9; }
+    .label { font-size: 22px; }
+    .name { font-size: 15px; fill: rgba(248,241,201,.72); font-weight: 700; }
+  </style>
+  <g transform="translate(36 34)">
+    <g transform="scale(.85)">
+      <rect width="160" height="160" rx="18" fill="#facc15"/>
+      <rect x="43" y="30" width="74" height="100" rx="3" fill="#0f172a"/>
+      <path d="M96 30V53H117Z" fill="#f8f1c9"/>
+      <path d="M57 72H101M57 91H101" stroke="#f8f1c9" stroke-width="8" stroke-linecap="square"/>
+      <path d="M52 112C67 123 92 124 108 112" fill="none" stroke="#f8f1c9" stroke-width="8" stroke-linecap="square"/>
+    </g>
+    <text class="label" x="0" y="178">01</text><text class="name" x="42" y="178">Paper</text>
+  </g>
+  <g transform="translate(202 34)">
+    <g transform="scale(.85)">
+      <rect width="160" height="160" rx="18" fill="#0f172a"/>
+      <rect x="28" y="28" width="104" height="104" rx="20" fill="#facc15"/>
+      <path d="M52 50H90L108 68V112H52Z" fill="#0f172a"/>
+      <path d="M90 50V69H108Z" fill="#f8f1c9"/>
+      <path d="M62 76H94M62 94H98" stroke="#f8f1c9" stroke-width="7" stroke-linecap="square"/>
+      <path d="M52 121C69 131 92 131 109 121" fill="none" stroke="#facc15" stroke-width="7" stroke-linecap="square"/>
+    </g>
+    <text class="label" x="0" y="178">02</text><text class="name" x="42" y="178">Badge</text>
+  </g>
+  <g transform="translate(368 34)">
+    <g transform="scale(.85)">
+      <rect width="160" height="160" rx="18" fill="#facc15"/>
+      <path d="M42 82H78M78 82L111 56M78 82L110 108M59 47L78 82M59 117L78 82" stroke="#0f172a" stroke-width="8" stroke-linecap="square"/>
+      <circle cx="78" cy="82" r="16" fill="#0f172a"/>
+      <circle cx="42" cy="82" r="11" fill="#0f172a"/>
+      <circle cx="111" cy="56" r="11" fill="#0f172a"/>
+      <circle cx="110" cy="108" r="11" fill="#0f172a"/>
+      <circle cx="59" cy="47" r="9" fill="#0f172a"/>
+      <circle cx="59" cy="117" r="9" fill="#0f172a"/>
+      <circle cx="78" cy="82" r="6" fill="#f8f1c9"/>
+    </g>
+    <text class="label" x="0" y="178">03</text><text class="name" x="42" y="178">Graph</text>
+  </g>
+  <g transform="translate(534 34)">
+    <g transform="scale(.85)">
+      <rect width="160" height="160" rx="18" fill="#facc15"/>
+      <path d="M34 51L82 35L126 55L78 72Z" fill="#0f172a"/>
+      <path d="M34 51V105L78 126V72Z" fill="#111827"/>
+      <path d="M78 72L126 55V110L78 126Z" fill="#f8f1c9"/>
+      <path d="M47 86C57 95 66 101 78 106" fill="none" stroke="#f8f1c9" stroke-width="8" stroke-linecap="square"/>
+      <path d="M91 88C101 84 113 79 122 72" fill="none" stroke="#0f172a" stroke-width="8" stroke-linecap="square"/>
+    </g>
+    <text class="label" x="0" y="178">04</text><text class="name" x="42" y="178">Fold</text>
+  </g>
+  <g transform="translate(700 34)">
+    <g transform="scale(.85)">
+      <rect width="160" height="160" rx="18" fill="#0f172a"/>
+      <rect x="32" y="32" width="96" height="96" rx="10" fill="#facc15"/>
+      <path d="M52 50V94C52 113 63 124 80 124C97 124 108 113 108 94V50H91V93C91 102 87 108 80 108C73 108 69 102 69 93V50Z" fill="#0f172a"/>
+      <path d="M48 123C63 133 97 133 112 123" fill="none" stroke="#facc15" stroke-width="7" stroke-linecap="square"/>
+    </g>
+    <text class="label" x="0" y="178">05</text><text class="name" x="42" y="178">Wave</text>
+  </g>
+  <g transform="translate(866 34)">
+    <g transform="scale(.85)">
+      <rect width="160" height="160" rx="18" fill="#facc15"/>
+      <circle cx="80" cy="80" r="50" fill="none" stroke="#0f172a" stroke-width="9"/>
+      <path d="M55 61H90L105 76V110H55Z" fill="#0f172a"/>
+      <path d="M90 61V77H105Z" fill="#f8f1c9"/>
+      <path d="M48 96C61 107 81 111 101 102L113 96" fill="none" stroke="#0f172a" stroke-width="8" stroke-linecap="square"/>
+      <circle cx="48" cy="96" r="6" fill="#0f172a"/>
+      <circle cx="80" cy="108" r="6" fill="#0f172a"/>
+      <circle cx="113" cy="96" r="6" fill="#0f172a"/>
+    </g>
+    <text class="label" x="0" y="178">06</text><text class="name" x="42" y="178">Seal</text>
+  </g>
+  <text x="36" y="260" font-size="18" fill="rgba(248,241,201,.66)">Pick one option, then snowwave-icon.svg can be replaced with the selected mark.</text>
+</svg>
