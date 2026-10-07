@@ -56,16 +56,16 @@ const infoPanels = {
         paragraphs: [
             '如果课程无法播放、习题答案有误、知识图谱关系不准确，建议在反馈中说明课程名称、视频标题和具体问题。',
             '我们会优先处理影响学习路径、进度统计、课程资料和账号登录的问题。',
-            '反馈邮箱：feedback@snowwave-paper.local。也可以在登录后通过“社交”模块提交建议。',
+            '反馈邮箱：feedback@ai-graph.local。也可以在登录后通过“社交”模块提交建议。',
         ],
     },
     contact: {
         title: '联系我们',
         eyebrow: 'Contact',
         paragraphs: [
-            '课程内容合作：course@snowwave-paper.local',
-            '账号与数据支持：support@snowwave-paper.local',
-            '管理员与学校部署：admin@snowwave-paper.local',
+            '课程内容合作：course@ai-graph.local',
+            '账号与数据支持：support@ai-graph.local',
+            '管理员与学校部署：admin@ai-graph.local',
         ],
     },
     security: {
@@ -493,11 +493,11 @@ export default function UserLogin({ onLogin }) {
             <header className="foodie-auth-header">
                 <Link to="/login" className="foodie-auth-logo">
                     <span className="foodie-auth-logo-mark" aria-hidden="true">
-                        <img src="/snowwave-icon.svg?v=5" alt="" />
+                        <img src="/ai-graph-icon.svg?v=1" alt="" />
                     </span>
                     <span>
-                        <strong><small>The</small> Snowwave</strong>
-                        <strong>Paper</strong>
+                        <strong>AI图谱应用</strong>
+                        <small>Knowledge Graph Learning</small>
                     </span>
                 </Link>
             </header>
@@ -506,7 +506,7 @@ export default function UserLogin({ onLogin }) {
                 <div className="user-auth-visual foodie-auth-visual">
                     <div className="foodie-auth-glow foodie-auth-glow-one" />
                     <div className="foodie-auth-glow foodie-auth-glow-two" />
-                    <h1><span>AI图谱</span><span>Paper</span></h1>
+                    <h1><span>AI图谱</span><span>应用</span></h1>
                     <p>让知识节点彼此连接，形成可追踪的学习图谱</p>
                     <strong>围绕课程、视频、练习和笔记建立知识关系，帮助你看清学习路径、薄弱环节和下一步方向。</strong>
                     <div className="foodie-auth-visual-actions">
@@ -539,7 +539,7 @@ export default function UserLogin({ onLogin }) {
                         </div>
                         <div>
                             <strong>联系</strong>
-                            <span>support@snowwave-paper.local</span>
+                            <span>support@ai-graph.local</span>
                             <span>工作日 09:00 - 18:00</span>
                             <span>课程资料与学习路径支持</span>
                         </div>
@@ -635,4 +635,5 @@ export default function UserLogin({ onLogin }) {
         </main>
     );
 }
+
 

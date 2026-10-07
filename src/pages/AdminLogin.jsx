@@ -20,11 +20,11 @@ export default function AdminLogin() {
     return (
         <main className="admin-auth-page">
             <div className="admin-auth-topbar">
-                <Link to="/" className="admin-brand"><span><strong><small>The</small> AI图谱应用</strong><small>学习平台</small></span></Link>
+                <Link to="/" className="admin-brand"><span><strong>AI图谱应用</strong><small>学习平台</small></span></Link>
             </div>
             <form className="admin-auth-card" onSubmit={handleSubmit}>
                 <div className="admin-mark">管</div>
-                <p className="admin-kicker">SNOWWAVE PAPER</p>
+                <p className="admin-kicker">AI GRAPH APPLICATION</p>
                 <h1>管理员登录</h1>
                 <p className="admin-auth-subtitle">进入平台管理后台，查看课程和学生学习情况。</p>
 

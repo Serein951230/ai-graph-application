@@ -38,7 +38,7 @@ function DesktopTitleBar() {
   return (
     <div className="desktop-titlebar">
       <div className="desktop-titlebar-brand">
-        <img src="/snowwave-icon.svg?v=5" alt="" />
+        <img src="/ai-graph-icon.svg?v=1" alt="" />
         <div>
           <strong>AI图谱应用</strong>
           <span>本地桌面应用 · 知识库增强学习助手</span>
@@ -204,3 +204,4 @@ function AppRoutes({ userSignedIn, setUserSignedIn, sidebarCollapsed, setSidebar
     </div>
   );
 }
+

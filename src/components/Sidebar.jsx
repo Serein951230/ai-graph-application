@@ -29,11 +29,11 @@ export default function Sidebar({ collapsed, compactNav, mobileOpen, onMobileClo
                 {/* Logo */}
                 <div className="sidebar-logo">
                     <div className="logo-icon" aria-hidden="true">
-                        <img src="/snowwave-icon.svg?v=5" alt="" />
+                        <img src="/ai-graph-icon.svg?v=1" alt="" />
                     </div>
                     {(!collapsed || compactNav) && (
                         <div className="logo-text">
-                            <span className="logo-name"><small>The</small> AI图谱应用</span>
+                            <span className="logo-name">AI图谱应用</span>
                         </div>
                     )}
                     {compactNav && <button className="sidebar-close" type="button" onClick={onMobileClose} aria-label="关闭导航菜单">×</button>}
@@ -249,4 +249,5 @@ export default function Sidebar({ collapsed, compactNav, mobileOpen, onMobileClo
         </>
     );
 }
+
 

@@ -90,7 +90,7 @@ export default function DoubtSolverAi() {
         <div className="chat-layout"><section className="chat-panel">
             <div className="chat-messages">
                 {messages.length === 0 && <div className="chat-empty">
-                    <div className="chat-empty-mark snowwave-mark" aria-hidden="true"><img src="/snowwave-icon.svg?v=5" alt="" /></div>
+                    <div className="chat-empty-mark snowwave-mark" aria-hidden="true"><img src="/ai-graph-icon.svg?v=1" alt="" /></div>
                     <h2>今天想解决什么问题？</h2><p>连接模型后，可以直接问答，也可以检索你的资料、笔记和课程。</p><Link to="/settings#rag">配置模型</Link>
                 </div>}
                 {messages.map((message, index) => <ChatMessage key={index} message={message} />)}
@@ -126,3 +126,4 @@ function renderAnswerContent(content) {
         return part.split('\n').map((line, lineIndex) => line.trim() ? <p key={`${index}-${lineIndex}`}>{line}</p> : <br key={`${index}-${lineIndex}`} />);
     });
 }
+

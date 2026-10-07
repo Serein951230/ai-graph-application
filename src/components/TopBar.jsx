@@ -82,7 +82,7 @@ export default function TopBar({ theme, navMode, sidebarCollapsed, compactNav, m
                 )}
                 {!desktopApp && (compactNav || navMode === 'top') && (
                     <Link to="/" className="topbar-brand" aria-label="首页">
-                        <img src="/snowwave-icon.svg?v=5" alt="" />
+                        <img src="/ai-graph-icon.svg?v=1" alt="" />
                     </Link>
                 )}
                 {desktopApp && (
@@ -528,3 +528,4 @@ export default function TopBar({ theme, navMode, sidebarCollapsed, compactNav, m
         </header>
     );
 }
+
