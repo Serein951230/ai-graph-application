@@ -280,6 +280,206 @@ body.desktop-runtime:has(.theme-light) {
   overflow-y: auto;
 }
 
+.direct-auth-page {
+  min-height: 100vh;
+  background:
+    linear-gradient(120deg, rgba(250,204,21,.09), transparent 32%),
+    radial-gradient(circle at 78% 16%, rgba(250,204,21,.14), transparent 28%),
+    #08090d;
+  color: #f8f1c9;
+  display: flex;
+  flex-direction: column;
+}
+
+.direct-auth-header {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(28px, 4vw, 64px);
+  border-bottom: 1px solid rgba(248,241,201,.1);
+}
+
+.direct-auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.direct-auth-brand img {
+  width: 42px;
+  height: 42px;
+  display: block;
+}
+
+.direct-auth-brand span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.direct-auth-brand strong {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.direct-auth-brand small {
+  color: rgba(248,241,201,.56);
+  font-size: .72rem;
+}
+
+.direct-auth-header > button {
+  height: 38px;
+  padding: 0 18px;
+  border: 1px solid rgba(248,241,201,.22);
+  background: rgba(255,255,255,.04);
+  color: #f8f1c9;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.direct-auth-header > button:hover {
+  border-color: rgba(250,204,21,.72);
+  color: #facc15;
+}
+
+.direct-auth-stage {
+  flex: 1;
+  width: min(1120px, calc(100% - 56px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(300px, .9fr) minmax(360px, 440px);
+  gap: clamp(36px, 6vw, 96px);
+  align-items: center;
+  padding: 42px 0;
+}
+
+.direct-auth-summary {
+  border-left: 4px solid #facc15;
+  padding-left: 26px;
+}
+
+.direct-auth-summary span {
+  color: #facc15;
+  font-family: "Oswald", var(--font-serif);
+  font-size: .82rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+}
+
+.direct-auth-summary h1 {
+  margin: 14px 0 18px;
+  color: #f8f1c9;
+  font-size: clamp(3rem, 7vw, 6.6rem);
+  line-height: .9;
+}
+
+.direct-auth-summary p {
+  max-width: 420px;
+  color: rgba(248,241,201,.68);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.direct-auth-card {
+  width: 100%;
+  padding: 30px;
+  background: #121720;
+  border: 1px solid rgba(248,241,201,.16);
+  box-shadow: 0 28px 80px rgba(0,0,0,.32);
+}
+
+.direct-auth-card .user-auth-card-heading {
+  margin-bottom: 20px;
+}
+
+.direct-auth-card .user-auth-card-heading > span {
+  color: #facc15;
+  font-family: "Oswald", var(--font-serif);
+  letter-spacing: .16em;
+  font-weight: 900;
+}
+
+.direct-auth-card h2,
+.direct-auth-card .admin-field-label {
+  color: #f8f1c9;
+}
+
+.direct-auth-card .user-auth-card-heading p {
+  color: rgba(248,241,201,.62);
+}
+
+.direct-auth-card .user-auth-card-heading p button {
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  color: #facc15;
+  font: inherit;
+  cursor: pointer;
+}
+
+.direct-auth-card .form-input {
+  background: #1b2029;
+  border-color: rgba(248,241,201,.18);
+  color: #f8f1c9;
+}
+
+.direct-auth-card .form-input::placeholder {
+  color: rgba(248,241,201,.38);
+}
+
+.direct-auth-card .user-auth-captcha {
+  background: #202631;
+  border-color: rgba(250,204,21,.28);
+  color: #f8f1c9;
+}
+
+.direct-auth-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 8px 0 16px;
+}
+
+.direct-auth-methods button {
+  height: 38px;
+  border: 1px solid rgba(248,241,201,.16);
+  background: #1b2029;
+  color: rgba(248,241,201,.64);
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.direct-auth-methods button.active,
+.direct-auth-methods button:hover {
+  border-color: #facc15;
+  color: #08090d;
+  background: #facc15;
+}
+
+.direct-auth-card .user-auth-submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+@media (max-width: 820px) {
+  .direct-auth-stage {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .direct-auth-summary {
+    display: none;
+  }
+  .direct-auth-header {
+    padding: 0 18px;
+  }
+}
+
 .main-content {
   margin-left: 0;
   padding-top: var(--topbar-height);
