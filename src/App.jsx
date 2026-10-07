@@ -61,7 +61,7 @@ function DesktopTitleBar() {
 export default function App() {
   const [desktopApp] = useState(isDesktopRuntime);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [userSignedIn, setUserSignedIn] = useState(() => desktopApp || sessionStorage.getItem('snowwave-user') === 'signed-in');
+  const [userSignedIn, setUserSignedIn] = useState(() => sessionStorage.getItem('snowwave-user') === 'signed-in');
   const [theme, setTheme] = useState(() => localStorage.getItem('snowwave-theme') || 'dark');
   const [navMode, setNavMode] = useState(() => desktopApp ? 'side' : (localStorage.getItem('snowwave-nav-mode') || 'top'));
   const [compactNav, setCompactNav] = useState(() => window.matchMedia(compactNavQuery).matches);
@@ -69,7 +69,6 @@ export default function App() {
 
   useEffect(() => {
     document.body.classList.toggle('desktop-runtime', desktopApp);
-    if (desktopApp) sessionStorage.setItem('snowwave-user', 'signed-in');
     return () => document.body.classList.remove('desktop-runtime');
   }, [desktopApp]);
 
@@ -142,13 +141,16 @@ function AppRoutes({ userSignedIn, setUserSignedIn, sidebarCollapsed, setSidebar
     );
   }
 
-  if (!desktopApp && (isLoginRoute || !userSignedIn)) {
+  if (isLoginRoute || !userSignedIn) {
     return (
-      <div className="admin-root theme-dark">
-        <Routes>
-          <Route path="/login" element={<UserLogin onLogin={() => setUserSignedIn(true)} />} />
-          <Route path="*" element={<UserLogin onLogin={() => setUserSignedIn(true)} />} />
-        </Routes>
+      <div className={`admin-root theme-dark ${desktopApp ? 'desktop-login-root' : ''}`}>
+        {desktopApp && <DesktopTitleBar />}
+        <div className={desktopApp ? 'desktop-login-content' : ''}>
+          <Routes>
+            <Route path="/login" element={<UserLogin onLogin={() => setUserSignedIn(true)} />} />
+            <Route path="*" element={<UserLogin onLogin={() => setUserSignedIn(true)} />} />
+          </Routes>
+        </div>
       </div>
     );
   }
@@ -171,7 +173,6 @@ function AppRoutes({ userSignedIn, setUserSignedIn, sidebarCollapsed, setSidebar
             desktopApp={desktopApp}
             onSignOut={() => {
               sessionStorage.removeItem('snowwave-user');
-              if (desktopApp) return;
               setUserSignedIn(false);
             }}
           />

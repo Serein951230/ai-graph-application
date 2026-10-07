@@ -268,6 +268,18 @@ body.desktop-runtime:has(.theme-light) {
   background: #eef2f7;
 }
 
+.desktop-login-root {
+  min-height: 100vh;
+  background: #08090d;
+  overflow: hidden;
+}
+
+.desktop-login-content {
+  height: 100vh;
+  padding-top: var(--desktop-titlebar-height);
+  overflow-y: auto;
+}
+
 .main-content {
   margin-left: 0;
   padding-top: var(--topbar-height);
