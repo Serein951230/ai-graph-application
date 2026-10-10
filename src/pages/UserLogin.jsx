@@ -275,7 +275,19 @@ export default function UserLogin({ onLogin }) {
             <section className="direct-auth-stage">
                 <div className="direct-auth-summary">
                     <span>LOCAL AI WORKSPACE</span>
-                    <h1>AI图谱应用</h1>
+                    <div className="direct-auth-node-map" aria-hidden="true">
+                        <i className="node-line node-line-a" />
+                        <i className="node-line node-line-b" />
+                        <i className="node-line node-line-c" />
+                        <i className="node-line node-line-d" />
+                        <i className="node-line node-line-e" />
+                        <i className="node-dot node-dot-main" />
+                        <i className="node-dot node-dot-a" />
+                        <i className="node-dot node-dot-b" />
+                        <i className="node-dot node-dot-c" />
+                        <i className="node-dot node-dot-d" />
+                        <i className="node-dot node-dot-e" />
+                    </div>
                     <p>登录后进入学习工作台，管理课程、资料库、知识图谱和 AI 答疑。</p>
                 </div>
 
