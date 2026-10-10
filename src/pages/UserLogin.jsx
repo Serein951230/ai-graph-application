@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const USERS_STORAGE_KEY = 'snowwave-users';
@@ -65,6 +65,115 @@ function normalizeAccount(method, value) {
     if (method === 'email') return trimmed.toLowerCase();
     if (method === 'phone') return trimmed.replace(/\s/g, '');
     return trimmed;
+}
+
+function LoginGraphPreview() {
+    const mountRef = useRef(null);
+
+    useEffect(() => {
+        const mount = mountRef.current;
+        if (!mount) return undefined;
+
+        let graph = null;
+        let resizeObserver = null;
+        let disposed = false;
+
+        Promise.all([
+            import('3d-force-graph'),
+            import('./KnowledgeGraph'),
+            import('three'),
+            import('three-spritetext'),
+        ]).then(([graphModule, { buildGraphData }, THREE, spriteModule]) => {
+            if (disposed || !mount) return;
+            const SpriteText = spriteModule.default;
+            const sourceGraph = buildGraphData();
+            const keepNode = node => {
+                if (node.folder === '学习路径' || node.folder === '标签') return true;
+                if (node.folder === '课程' || node.folder === '主题') return true;
+                if (node.folder === '视频') return /CS50|Python|Git|算法|Web|函数|数据/.test(node.name);
+                if (node.folder === '笔记') return /React|软件|CS50|学习/.test(node.name);
+                return node.kind === 'file';
+            };
+            const keptIds = new Set(sourceGraph.nodes.filter(keepNode).slice(0, 48).map(node => node.id));
+            const nodes = sourceGraph.nodes.filter(node => keptIds.has(node.id));
+            const links = sourceGraph.links.filter(link => {
+                const source = typeof link.source === 'object' ? link.source.id : link.source;
+                const target = typeof link.target === 'object' ? link.target.id : link.target;
+                return keptIds.has(source) && keptIds.has(target);
+            });
+
+            const makeNode = node => {
+                const group = new THREE.Group();
+                const radius = Math.max(2.1, Math.cbrt(node.val || 3) * 2.05);
+                const color = new THREE.Color(node.color || '#facc15');
+                const core = new THREE.Mesh(
+                    new THREE.SphereGeometry(radius, 18, 18),
+                    new THREE.MeshStandardMaterial({
+                        color,
+                        roughness: 0.38,
+                        metalness: 0.1,
+                        emissive: color,
+                        emissiveIntensity: 0.2,
+                        transparent: true,
+                        opacity: 0.95,
+                    }),
+                );
+                const glow = new THREE.Mesh(
+                    new THREE.SphereGeometry(radius * 1.45, 12, 12),
+                    new THREE.MeshBasicMaterial({
+                        color,
+                        transparent: true,
+                        opacity: 0.08,
+                        blending: THREE.AdditiveBlending,
+                        depthWrite: false,
+                    }),
+                );
+                const label = new SpriteText(node.name);
+                label.color = 'rgba(248, 241, 201, 0.74)';
+                label.textHeight = node.kind === 'tag' ? 2.15 : 1.55;
+                label.position.y = radius * 1.7 + 2.2;
+                group.add(glow, core, label);
+                return group;
+            };
+
+            graph = graphModule.default({ controlType: 'orbit' })(mount)
+                .backgroundColor('rgba(0,0,0,0)')
+                .showNavInfo(false)
+                .enableNodeDrag(false)
+                .enableNavigationControls(false)
+                .nodeThreeObject(makeNode)
+                .nodeLabel(node => node.name)
+                .linkColor(() => 'rgba(248,241,201,.18)')
+                .linkWidth(0.38)
+                .linkOpacity(0.42)
+                .d3AlphaDecay(0.035)
+                .d3VelocityDecay(0.32);
+
+            graph.graphData({ nodes, links });
+            graph.width(mount.clientWidth).height(mount.clientHeight);
+            graph.cameraPosition({ x: 16, y: 34, z: 250 }, { x: 0, y: 0, z: 0 }, 0);
+            const controls = graph.controls();
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 0.45;
+            controls.enablePan = false;
+            controls.enableZoom = false;
+
+            resizeObserver = new ResizeObserver(() => {
+                if (!graph || disposed) return;
+                graph.width(mount.clientWidth).height(mount.clientHeight);
+            });
+            resizeObserver.observe(mount);
+        });
+
+        return () => {
+            disposed = true;
+            resizeObserver?.disconnect();
+            graph?._destructor?.();
+            mount.replaceChildren();
+        };
+    }, []);
+
+    return <div className="direct-auth-graph-preview" ref={mountRef} />;
 }
 
 export default function UserLogin({ onLogin }) {
@@ -276,43 +385,7 @@ export default function UserLogin({ onLogin }) {
                 <div className="direct-auth-summary">
                     <span>LOCAL AI WORKSPACE</span>
                     <div className="direct-auth-graph-motion" aria-hidden="true">
-                        <div className="graph-orbit graph-orbit-one" />
-                        <div className="graph-orbit graph-orbit-two" />
-                        <svg viewBox="0 0 520 360" role="img">
-                            <g className="graph-lines">
-                                <line x1="260" y1="180" x2="86" y2="92" />
-                                <line x1="260" y1="180" x2="430" y2="70" />
-                                <line x1="260" y1="180" x2="105" y2="286" />
-                                <line x1="260" y1="180" x2="420" y2="286" />
-                                <line x1="260" y1="180" x2="486" y2="196" />
-                                <line x1="86" y1="92" x2="105" y2="286" />
-                                <line x1="430" y1="70" x2="486" y2="196" />
-                            </g>
-                            <g className="graph-node graph-node-main">
-                                <circle cx="260" cy="180" r="58" />
-                                <circle cx="260" cy="180" r="18" />
-                            </g>
-                            <g className="graph-node graph-node-a">
-                                <circle cx="86" cy="92" r="28" />
-                                <circle cx="86" cy="92" r="10" />
-                            </g>
-                            <g className="graph-node graph-node-b">
-                                <circle cx="430" cy="70" r="30" />
-                                <circle cx="430" cy="70" r="10" />
-                            </g>
-                            <g className="graph-node graph-node-c">
-                                <circle cx="105" cy="286" r="27" />
-                                <circle cx="105" cy="286" r="9" />
-                            </g>
-                            <g className="graph-node graph-node-d">
-                                <circle cx="420" cy="286" r="29" />
-                                <circle cx="420" cy="286" r="10" />
-                            </g>
-                            <g className="graph-node graph-node-e">
-                                <circle cx="486" cy="196" r="21" />
-                                <circle cx="486" cy="196" r="8" />
-                            </g>
-                        </svg>
+                        <LoginGraphPreview />
                     </div>
                     <p>登录后进入学习工作台，管理课程、资料库、知识图谱和 AI 答疑。</p>
                 </div>
