@@ -347,11 +347,11 @@ body.desktop-runtime:has(.theme-light) {
 
 .direct-auth-stage {
   flex: 1;
-  width: min(1280px, calc(100% - 40px));
+  width: min(1440px, calc(100% - 40px));
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(520px, 1.25fr) minmax(360px, 440px);
-  gap: clamp(28px, 4.5vw, 72px);
+  grid-template-columns: minmax(620px, 1.45fr) minmax(360px, 440px);
+  gap: clamp(24px, 3.8vw, 64px);
   align-items: center;
   padding: 42px 0;
 }
@@ -362,8 +362,8 @@ body.desktop-runtime:has(.theme-light) {
 
 .direct-auth-graph-motion {
   position: relative;
-  width: min(820px, 100%);
-  aspect-ratio: 1.38;
+  width: min(980px, 100%);
+  aspect-ratio: 1.5;
   margin: 0;
   border: 0;
   background:
