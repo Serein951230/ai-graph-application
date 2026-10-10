@@ -145,7 +145,7 @@ function LoginGraphPreview() {
 
             graph.graphData({ nodes, links });
             graph.width(mount.clientWidth).height(mount.clientHeight);
-            graph.cameraPosition({ x: 16, y: 34, z: 250 }, { x: 0, y: 0, z: 0 }, 0);
+            graph.cameraPosition({ x: 20, y: 38, z: 390 }, { x: 0, y: 0, z: 0 }, 0);
             const controls = graph.controls();
             controls.autoRotate = true;
             controls.autoRotateSpeed = 1.25;
