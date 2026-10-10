@@ -357,63 +357,29 @@ body.desktop-runtime:has(.theme-light) {
 }
 
 .direct-auth-summary {
-  border-left: 4px solid #facc15;
-  padding-left: 26px;
-}
-
-.direct-auth-summary span {
-  color: #facc15;
-  font-family: "Oswald", var(--font-serif);
-  font-size: .82rem;
-  font-weight: 900;
-  letter-spacing: .14em;
-}
-
-.direct-auth-summary p {
-  max-width: 420px;
-  color: rgba(248,241,201,.68);
-  font-size: 1rem;
-  line-height: 1.9;
+  padding: 0;
 }
 
 .direct-auth-graph-motion {
   position: relative;
-  width: min(520px, 100%);
-  aspect-ratio: 1.22;
-  margin: 20px 0 24px;
-  border: 1px solid rgba(248,241,201,.12);
+  width: min(620px, 100%);
+  aspect-ratio: 1.12;
+  margin: 0;
+  border: 0;
   background:
-    radial-gradient(circle at 36% 46%, rgba(250,204,21,.09), transparent 28%),
-    #08090d;
+    radial-gradient(circle at 42% 54%, rgba(250,204,21,.1), transparent 32%),
+    transparent;
   overflow: hidden;
 }
 
 .direct-auth-graph-motion::before,
 .direct-auth-graph-motion::after {
-  content: "";
-  position: absolute;
-  border: 1px solid rgba(248,241,201,.12);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.direct-auth-graph-motion::before {
-  width: 72%;
-  height: 72%;
-  left: 14%;
-  top: 14%;
-}
-
-.direct-auth-graph-motion::after {
-  width: 44%;
-  height: 44%;
-  left: 28%;
-  top: 28%;
+  display: none;
 }
 
 .direct-auth-graph-preview {
   position: absolute;
-  inset: -18% -12% -12% -18%;
+  inset: -24% -18% -18% -24%;
 }
 
 .direct-auth-graph-preview canvas {

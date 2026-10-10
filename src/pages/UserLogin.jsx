@@ -76,16 +76,15 @@ function LoginGraphPreview() {
 
         let graph = null;
         let resizeObserver = null;
+        let animationFrame = 0;
         let disposed = false;
 
         Promise.all([
             import('3d-force-graph'),
             import('./KnowledgeGraph'),
             import('three'),
-            import('three-spritetext'),
-        ]).then(([graphModule, { buildGraphData }, THREE, spriteModule]) => {
+        ]).then(([graphModule, { buildGraphData }, THREE]) => {
             if (disposed || !mount) return;
-            const SpriteText = spriteModule.default;
             const sourceGraph = buildGraphData();
             const keepNode = node => {
                 if (node.folder === '学习路径' || node.folder === '标签') return true;
@@ -128,11 +127,7 @@ function LoginGraphPreview() {
                         depthWrite: false,
                     }),
                 );
-                const label = new SpriteText(node.name);
-                label.color = 'rgba(248, 241, 201, 0.74)';
-                label.textHeight = node.kind === 'tag' ? 2.15 : 1.55;
-                label.position.y = radius * 1.7 + 2.2;
-                group.add(glow, core, label);
+                group.add(glow, core);
                 return group;
             };
 
@@ -142,7 +137,7 @@ function LoginGraphPreview() {
                 .enableNodeDrag(false)
                 .enableNavigationControls(false)
                 .nodeThreeObject(makeNode)
-                .nodeLabel(node => node.name)
+                .nodeLabel(() => '')
                 .linkColor(() => 'rgba(248,241,201,.18)')
                 .linkWidth(0.38)
                 .linkOpacity(0.42)
@@ -158,6 +153,23 @@ function LoginGraphPreview() {
             controls.enablePan = false;
             controls.enableZoom = false;
 
+            const animateCamera = (time = 0) => {
+                if (disposed || !graph) return;
+                const angle = time * 0.00022;
+                const distance = 230 + Math.sin(time * 0.00072) * 18;
+                graph.cameraPosition(
+                    {
+                        x: Math.cos(angle) * distance,
+                        y: 38 + Math.sin(time * 0.00054) * 28,
+                        z: Math.sin(angle) * distance,
+                    },
+                    { x: 0, y: 0, z: 0 },
+                    0,
+                );
+                animationFrame = requestAnimationFrame(animateCamera);
+            };
+            animationFrame = requestAnimationFrame(animateCamera);
+
             resizeObserver = new ResizeObserver(() => {
                 if (!graph || disposed) return;
                 graph.width(mount.clientWidth).height(mount.clientHeight);
@@ -167,6 +179,7 @@ function LoginGraphPreview() {
 
         return () => {
             disposed = true;
+            cancelAnimationFrame(animationFrame);
             resizeObserver?.disconnect();
             graph?._destructor?.();
             mount.replaceChildren();
@@ -383,11 +396,9 @@ export default function UserLogin({ onLogin }) {
 
             <section className="direct-auth-stage">
                 <div className="direct-auth-summary">
-                    <span>LOCAL AI WORKSPACE</span>
                     <div className="direct-auth-graph-motion" aria-hidden="true">
                         <LoginGraphPreview />
                     </div>
-                    <p>登录后进入学习工作台，管理课程、资料库、知识图谱和 AI 答疑。</p>
                 </div>
 
                 {panel === 'admin' ? (
