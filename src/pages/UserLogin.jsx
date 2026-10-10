@@ -76,7 +76,6 @@ function LoginGraphPreview() {
 
         let graph = null;
         let resizeObserver = null;
-        let animationFrame = 0;
         let disposed = false;
 
         Promise.all([
@@ -134,8 +133,8 @@ function LoginGraphPreview() {
             graph = graphModule.default({ controlType: 'orbit' })(mount)
                 .backgroundColor('rgba(0,0,0,0)')
                 .showNavInfo(false)
-                .enableNodeDrag(false)
-                .enableNavigationControls(false)
+                .enableNodeDrag(true)
+                .enableNavigationControls(true)
                 .nodeThreeObject(makeNode)
                 .nodeLabel(() => '')
                 .linkColor(() => 'rgba(248,241,201,.18)')
@@ -149,26 +148,10 @@ function LoginGraphPreview() {
             graph.cameraPosition({ x: 16, y: 34, z: 250 }, { x: 0, y: 0, z: 0 }, 0);
             const controls = graph.controls();
             controls.autoRotate = true;
-            controls.autoRotateSpeed = 0.45;
-            controls.enablePan = false;
-            controls.enableZoom = false;
-
-            const animateCamera = (time = 0) => {
-                if (disposed || !graph) return;
-                const angle = time * 0.00022;
-                const distance = 230 + Math.sin(time * 0.00072) * 18;
-                graph.cameraPosition(
-                    {
-                        x: Math.cos(angle) * distance,
-                        y: 38 + Math.sin(time * 0.00054) * 28,
-                        z: Math.sin(angle) * distance,
-                    },
-                    { x: 0, y: 0, z: 0 },
-                    0,
-                );
-                animationFrame = requestAnimationFrame(animateCamera);
-            };
-            animationFrame = requestAnimationFrame(animateCamera);
+            controls.autoRotateSpeed = 1.25;
+            controls.enablePan = true;
+            controls.enableZoom = true;
+            controls.enableRotate = true;
 
             resizeObserver = new ResizeObserver(() => {
                 if (!graph || disposed) return;
@@ -179,7 +162,6 @@ function LoginGraphPreview() {
 
         return () => {
             disposed = true;
-            cancelAnimationFrame(animationFrame);
             resizeObserver?.disconnect();
             graph?._destructor?.();
             mount.replaceChildren();
