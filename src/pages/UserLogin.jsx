@@ -275,18 +275,44 @@ export default function UserLogin({ onLogin }) {
             <section className="direct-auth-stage">
                 <div className="direct-auth-summary">
                     <span>LOCAL AI WORKSPACE</span>
-                    <div className="direct-auth-node-map" aria-hidden="true">
-                        <i className="node-line node-line-a" />
-                        <i className="node-line node-line-b" />
-                        <i className="node-line node-line-c" />
-                        <i className="node-line node-line-d" />
-                        <i className="node-line node-line-e" />
-                        <i className="node-dot node-dot-main" />
-                        <i className="node-dot node-dot-a" />
-                        <i className="node-dot node-dot-b" />
-                        <i className="node-dot node-dot-c" />
-                        <i className="node-dot node-dot-d" />
-                        <i className="node-dot node-dot-e" />
+                    <div className="direct-auth-graph-motion" aria-hidden="true">
+                        <div className="graph-orbit graph-orbit-one" />
+                        <div className="graph-orbit graph-orbit-two" />
+                        <svg viewBox="0 0 520 360" role="img">
+                            <g className="graph-lines">
+                                <line x1="260" y1="180" x2="86" y2="92" />
+                                <line x1="260" y1="180" x2="430" y2="70" />
+                                <line x1="260" y1="180" x2="105" y2="286" />
+                                <line x1="260" y1="180" x2="420" y2="286" />
+                                <line x1="260" y1="180" x2="486" y2="196" />
+                                <line x1="86" y1="92" x2="105" y2="286" />
+                                <line x1="430" y1="70" x2="486" y2="196" />
+                            </g>
+                            <g className="graph-node graph-node-main">
+                                <circle cx="260" cy="180" r="58" />
+                                <circle cx="260" cy="180" r="18" />
+                            </g>
+                            <g className="graph-node graph-node-a">
+                                <circle cx="86" cy="92" r="28" />
+                                <circle cx="86" cy="92" r="10" />
+                            </g>
+                            <g className="graph-node graph-node-b">
+                                <circle cx="430" cy="70" r="30" />
+                                <circle cx="430" cy="70" r="10" />
+                            </g>
+                            <g className="graph-node graph-node-c">
+                                <circle cx="105" cy="286" r="27" />
+                                <circle cx="105" cy="286" r="9" />
+                            </g>
+                            <g className="graph-node graph-node-d">
+                                <circle cx="420" cy="286" r="29" />
+                                <circle cx="420" cy="286" r="10" />
+                            </g>
+                            <g className="graph-node graph-node-e">
+                                <circle cx="486" cy="196" r="21" />
+                                <circle cx="486" cy="196" r="8" />
+                            </g>
+                        </svg>
                     </div>
                     <p>登录后进入学习工作台，管理课程、资料库、知识图谱和 AI 答疑。</p>
                 </div>
